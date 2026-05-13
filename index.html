@@ -577,6 +577,7 @@ body {
 <div id="tab-generate" class="tab-content">
   <div class="gen-form">
     <p class="oracle-intro">Tell the Oracle what you need. She'll generate custom shadow prompts, integration rituals, or a weekly plan — tailored to your exact business season.</p>
+
     <div class="form-group">
       <label class="form-label">Your name (optional)</label>
       <input type="text" class="form-input" id="genName" placeholder="How the Oracle should address you…">
@@ -595,7 +596,7 @@ body {
     </div>
     <div class="form-group">
       <label class="form-label">What's alive in your business right now?</label>
-      <textarea class="form-textarea" id="genContext" placeholder="e.g. I just launched and no one bought. I raised my prices and lost a client. I can't show up consistently…"></textarea>
+      <textarea class="form-textarea" id="genContext" placeholder="e.g. I just launched and no one bought. Male clients undermining me and asking for discounts. I can't show up consistently…"></textarea>
     </div>
     <div class="form-group">
       <label class="form-label">What would you like the Oracle to generate?</label>
@@ -608,7 +609,20 @@ body {
         <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-dot"></div><span>Saboteur CEO dialogue</span></div>
       </div>
     </div>
-    <button class="gen-btn" id="genBtn" onclick="generatePrompts()">✦ Consult the Oracle ✦</button>
+    <button class="gen-btn" onclick="generatePrompts()">✦ Generate My Oracle Request ✦</button>
+
+    <div class="gen-output" id="requestBox">
+      <span class="gen-output-label">Step 2 — Copy this & paste into the Claude chat</span>
+      <div class="gen-output-text" id="requestText" style="background:rgba(0,0,0,0.3);padding:1.1rem;border-radius:8px;font-size:13px;line-height:1.9;margin-bottom:0.75rem;"></div>
+      <button class="copy-btn" id="copyRequestBtn" onclick="copyRequest()">Copy message</button>
+    </div>
+
+    <div id="pasteSection" style="display:none;margin-top:2rem;">
+      <span class="gen-output-label">Step 3 — Paste Claude's Oracle response here</span>
+      <textarea class="form-textarea" id="pastedResponse" style="min-height:220px;margin-top:0.5rem;" placeholder="Paste the Oracle's response from the Claude chat here…"></textarea>
+      <button class="gen-btn" style="margin-top:0.85rem;" onclick="saveResponse()">✦ Save to My Journal ✦</button>
+    </div>
+
     <div class="gen-output" id="genOutput">
       <span class="gen-output-label">Your Sacred Business Prompts</span>
       <div class="gen-output-text" id="genText"></div>
@@ -810,57 +824,41 @@ function toggleAction(check){
   document.getElementById('actionCount').textContent=document.querySelectorAll('.action-check.done').length;
 }
 
-// AI ORACLE — calls /api/oracle serverless function on Vercel
-async function generatePrompts(){
+// AI ORACLE — 3 step chat flow
+function generatePrompts(){
   const name=document.getElementById('genName').value.trim();
   const portal=document.getElementById('genPortal').value;
   const context=document.getElementById('genContext').value.trim();
   const checked=[...document.querySelectorAll('.checkbox-item.checked span')].map(s=>s.textContent);
 
-  if(!portal&&!context){
-    alert('Please select a portal or describe what\'s alive in your business.');
-    return;
-  }
-
-  const btn=document.getElementById('genBtn');
-  const output=document.getElementById('genOutput');
-  const genText=document.getElementById('genText');
-  const copyBtn=document.getElementById('copyBtn');
-
-  btn.disabled=true;
-  output.classList.add('show');
-  genText.innerHTML='<div class="loading-dots"><span>✦</span><span>✦</span><span>✦</span></div>';
-  copyBtn.style.display='none';
+  if(!portal&&!context){ alert('Please select a portal or describe what\'s alive in your business.'); return; }
 
   const addressing=name?`You are writing for ${name}, a spiritual entrepreneur.`:'You are writing for a spiritual entrepreneur.';
   const requested=checked.length?checked.join(', '):'5 deep shadow work prompts';
 
-  try {
-    const res=await fetch('/api/oracle',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        system:`You are the Badass Alchemy Oracle — a spiritually grounded, psychologically precise shadow work guide for spiritual entrepreneurs. Your voice is warm, direct, and unflinchingly honest — like a best friend who's also a therapist and a business strategist. You blend Jungian shadow work, somatic awareness, and real business strategy. You never coddle, never preach. You call women forward, never down. Brand mantra: "Soft life. Savage execution." Use ✦ as section/bullet markers. Plain text only, no markdown.`,
-        messages:[{
-          role:'user',
-          content:`${addressing}\nPortal: ${portal||'General shadow work'}.\nWhat's alive in their business: ${context||'general shadow patterns'}.\n\nGenerate the following: ${requested}\n\nBe psychologically precise — name the shadow mechanism beneath the surface behavior. Connect inner work to outer business strategy. Make it feel specific to this woman's situation. End with one grounding reminder in the brand voice.`
-        }]
-      })
-    });
+  const msg=`Act as the Badass Alchemy Oracle — a spiritually grounded, psychologically precise shadow work guide for spiritual entrepreneurs. Voice: warm, direct, unflinchingly honest. Like a best friend who's also a therapist and a business strategist. Blend Jungian shadow work, somatic awareness, and real business strategy. Never coddle. Call women forward, never down. Brand mantra: "Soft life. Savage execution." Use ✦ as section/bullet markers. Plain text only.\n\n${addressing}\nPortal: ${portal||'General shadow work'}.\nWhat's alive in their business: ${context||'general shadow patterns'}.\n\nGenerate the following: ${requested}\n\nBe psychologically precise — name the shadow mechanism beneath the surface behavior. Connect inner work to outer business strategy. Make it feel specific to this woman's situation. End with one grounding reminder in the brand voice.`;
 
-    const data=await res.json();
-    const text=data?.content?.[0]?.text;
-    if(text){
-      genText.textContent=text;
-      copyBtn.style.display='inline-block';
-    } else {
-      genText.textContent='The Oracle is resting. Please try again in a moment.';
-    }
-  } catch(e){
-    console.error('Oracle error:',e);
-    genText.textContent=`The Oracle encountered a disturbance: ${e.message}. Please try again.`;
-  }
-  btn.disabled=false;
+  document.getElementById('requestText').textContent=msg;
+  document.getElementById('requestBox').classList.add('show');
+  document.getElementById('pasteSection').style.display='block';
+  document.getElementById('genOutput').classList.remove('show');
+  document.getElementById('requestBox').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function copyRequest(){
+  navigator.clipboard.writeText(document.getElementById('requestText').textContent).then(()=>{
+    const btn=document.getElementById('copyRequestBtn');
+    btn.textContent='Copied ✓ — paste into Claude chat now';
+    setTimeout(()=>{ btn.textContent='Copy message'; },3000);
+  });
+}
+
+function saveResponse(){
+  const response=document.getElementById('pastedResponse').value.trim();
+  if(!response){ alert('Please paste the Oracle\'s response first.'); return; }
+  document.getElementById('genText').textContent=response;
+  document.getElementById('genOutput').classList.add('show');
+  document.getElementById('genOutput').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function copyOutput(){
