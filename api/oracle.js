@@ -20,14 +20,26 @@ export default async function handler(req, res) {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-sonnet-4-5-20251001',
         max_tokens: 1000,
         system,
         messages
       })
     });
 
-    const data = await response.json();
+    const raw = await response.text();
+    
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch(e) {
+      return res.status(500).json({ error: 'Invalid JSON from Anthropic', raw });
+    }
+
+    if (data.error) {
+      return res.status(500).json({ error: data.error.message || JSON.stringify(data.error) });
+    }
+
     return res.status(200).json(data);
 
   } catch (err) {
