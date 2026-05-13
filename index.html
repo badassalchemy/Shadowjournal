@@ -20,12 +20,9 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background-color: var(--black); min-height: 100vh; font-family: 'Montserrat', sans-serif; color: var(--white); overflow-x: hidden; }
-
 .galaxy { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; background: radial-gradient(ellipse at 70% 30%, rgba(100,40,120,0.35) 0%, transparent 60%), radial-gradient(ellipse at 30% 70%, rgba(60,20,80,0.3) 0%, transparent 55%), radial-gradient(ellipse at 50% 50%, rgba(40,15,60,0.2) 0%, transparent 70%), linear-gradient(160deg, #060408 0%, #0e0514 30%, #0a0318 60%, #060408 100%); }
 #starCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
-
 .wrap { position:relative; z-index:1; max-width:940px; margin:0 auto; padding-bottom:4rem; }
-
 .hero { text-align:center; padding:2.5rem 1.5rem 2rem; border-bottom:1px solid rgba(207,174,220,0.12); position:relative; }
 .hero::after { content:''; position:absolute; bottom:-1px; left:50%; transform:translateX(-50%); width:140px; height:1px; background:linear-gradient(90deg, var(--hot-pink), var(--lavender)); }
 .badge { display:inline-block; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; font-weight:600; color:var(--pink-mid); border:1px solid rgba(250,156,224,0.3); padding:5px 18px; border-radius:20px; margin-bottom:1.25rem; }
@@ -38,34 +35,27 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
 .tab-btn { font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600; padding:15px 22px; border:none; border-bottom:2px solid transparent; background:transparent; color:var(--white-muted); cursor:pointer; white-space:nowrap; transition:all 0.2s; }
 .tab-btn:hover { color:var(--lavender); }
 .tab-btn.active { color:var(--pink-mid); border-bottom-color:var(--hot-pink); }
-
 .tab-content { display:none; padding:2.5rem 1.5rem; }
 .tab-content.active { display:block; }
-
 .section-label { font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:3px; text-transform:uppercase; font-weight:700; color:var(--hot-pink); margin-bottom:1rem; display:block; }
 .section-title { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--white); margin-bottom:0.5rem; line-height:1.1; }
-
 .start-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1rem; margin-bottom:2.5rem; }
 .info-card { background:var(--card-bg); border:1px solid var(--card-border); border-radius:12px; padding:1.75rem; position:relative; overflow:hidden; }
 .info-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--hot-pink), var(--pink-mid), var(--lavender)); }
 .info-card .icon { font-size:24px; margin-bottom:1rem; }
 .info-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:var(--white); margin-bottom:0.6rem; }
 .info-card p { font-size:14px; color:var(--white-dim); line-height:1.8; }
-
 .safety-box { background:rgba(225,77,168,0.07); border:1px solid rgba(225,77,168,0.22); border-left:3px solid var(--hot-pink); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:2rem; }
 .safety-box p { font-size:14px; color:var(--white-dim); line-height:1.9; }
 .safety-box strong { color:var(--pink-mid); font-weight:600; }
-
 .wheel-container { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:1.5rem; }
 .wheel-item { background:var(--card-bg); border:1px solid var(--card-border); border-radius:10px; padding:1rem 1.1rem; }
 .wheel-item label { font-size:12px; color:var(--white-dim); display:block; margin-bottom:9px; font-weight:500; }
 .wheel-item input[type=range] { width:100%; cursor:pointer; accent-color:var(--hot-pink); }
 .wheel-score { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:300; background:linear-gradient(135deg,var(--pink-mid),var(--hot-pink)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-align:center; margin-top:5px; }
-
 .strategy-box { background:var(--card-bg); border:1px solid var(--card-border); border-left:3px solid var(--lavender); border-radius:8px; padding:1.25rem 1.5rem; }
 .strategy-box h4 { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--lavender); margin-bottom:8px; font-weight:700; }
 .strategy-box p { font-size:14px; color:var(--white-dim); line-height:1.7; }
-
 .portals-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin-bottom:2rem; }
 .portal-card { background:var(--card-bg); border:1px solid var(--card-border); border-radius:12px; padding:1.5rem; cursor:pointer; transition:all 0.25s; position:relative; overflow:hidden; }
 .portal-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--hot-pink),var(--pink-mid),var(--lavender)); }
@@ -75,7 +65,6 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
 .portal-name { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; color:var(--white); margin-bottom:5px; }
 .portal-freq { font-size:10px; letter-spacing:2px; text-transform:uppercase; margin-bottom:9px; font-weight:600; }
 .portal-desc { font-size:13px; color:var(--white-dim); line-height:1.65; }
-
 .portal-detail { display:none; margin-top:1.75rem; background:var(--card-bg); border:1px solid rgba(250,156,224,0.2); border-radius:14px; padding:2rem; }
 .portal-detail.show { display:block; }
 .portal-detail h3 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:600; color:var(--white); margin-bottom:0.75rem; }
@@ -92,7 +81,6 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
 .download-row { margin-top:1.75rem; display:flex; justify-content:flex-end; }
 .download-btn { padding:12px 28px; background:linear-gradient(135deg,rgba(225,77,168,0.2),rgba(250,156,224,0.15)); border:1px solid rgba(225,77,168,0.5); border-radius:9px; color:var(--pink-mid); font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; cursor:pointer; transition:all 0.2s; }
 .download-btn:hover { background:linear-gradient(135deg,rgba(225,77,168,0.38),rgba(250,156,224,0.3)); }
-
 .daily-spread { max-width:700px; margin:0 auto; }
 .spread-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.75rem; }
 .date-display { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:300; color:var(--white-muted); }
@@ -120,41 +108,6 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
 .integration-box { background:rgba(207,174,220,0.05); border:1px solid rgba(207,174,220,0.15); border-radius:10px; padding:1.1rem 1.35rem; margin-top:1.25rem; }
 .integration-box .int-label { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--lavender); margin-bottom:7px; font-weight:700; display:block; }
 .integration-box p { font-size:14px; color:var(--white-dim); line-height:1.75; }
-
-.gen-form { max-width:640px; margin:0 auto; }
-.oracle-intro { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; font-style:italic; color:var(--white-dim); margin-bottom:2rem; line-height:1.8; }
-.form-group { margin-bottom:1.5rem; }
-.form-label { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--hot-pink); margin-bottom:9px; display:block; font-weight:700; }
-.form-input, .form-select, .form-textarea { width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(207,174,220,0.18); border-radius:9px; padding:13px 16px; color:var(--white); font-family:'Montserrat',sans-serif; font-size:14px; outline:none; transition:border-color 0.2s; }
-.form-input:focus, .form-select:focus, .form-textarea:focus { border-color:rgba(250,156,224,0.5); }
-.form-select { appearance:none; cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23FA9CE0' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 15px center; padding-right:38px; }
-.form-select option { background:#1a0d1e; }
-.form-input::placeholder, .form-textarea::placeholder { color:rgba(255,255,255,0.3); }
-.form-textarea { resize:vertical; min-height:100px; line-height:1.7; }
-.checkbox-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
-.checkbox-item { display:flex; align-items:center; gap:11px; background:rgba(30,15,35,0.7); border:1px solid rgba(207,174,220,0.14); border-radius:9px; padding:11px 14px; cursor:pointer; transition:all 0.2s; }
-.checkbox-item:hover { border-color:rgba(250,156,224,0.3); }
-.checkbox-item.checked { background:rgba(225,77,168,0.08); border-color:rgba(225,77,168,0.45); }
-.checkbox-item span { font-size:13px; color:var(--white-muted); font-weight:500; }
-.checkbox-item.checked span { color:var(--pink-mid); }
-.check-dot { width:17px; height:17px; border-radius:4px; border:1px solid rgba(207,174,220,0.28); flex-shrink:0; transition:all 0.2s; display:flex; align-items:center; justify-content:center; }
-.checkbox-item.checked .check-dot { background:var(--hot-pink); border-color:var(--hot-pink); }
-.checkbox-item.checked .check-dot::after { content:'✓'; font-size:11px; color:#fff; font-weight:700; }
-.gen-btn { width:100%; padding:17px; background:linear-gradient(135deg,rgba(225,77,168,0.22),rgba(250,156,224,0.16)); border:1px solid rgba(225,77,168,0.55); border-radius:11px; color:var(--pink-mid); font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:700; cursor:pointer; transition:all 0.25s; margin-top:0.5rem; }
-.gen-btn:hover { background:linear-gradient(135deg,rgba(225,77,168,0.4),rgba(250,156,224,0.32)); border-color:var(--hot-pink); }
-.gen-btn:disabled { opacity:0.4; cursor:not-allowed; }
-.gen-output { margin-top:2rem; background:var(--card-bg); border:1px solid rgba(250,156,224,0.22); border-radius:14px; padding:2rem; display:none; }
-.gen-output.show { display:block; }
-.gen-output-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--hot-pink); margin-bottom:1.1rem; font-weight:700; display:block; }
-.gen-output-text { font-size:14px; color:var(--white); line-height:2; white-space:pre-wrap; }
-.loading-dots { display:flex; gap:8px; align-items:center; padding:0.5rem 0; }
-.loading-dots span { animation:blink 1.4s infinite; font-size:22px; color:var(--hot-pink); }
-.loading-dots span:nth-child(2) { animation-delay:0.2s; }
-.loading-dots span:nth-child(3) { animation-delay:0.4s; }
-@keyframes blink { 0%,80%,100%{opacity:0;} 40%{opacity:1;} }
-.copy-btn { margin-top:1.25rem; padding:9px 20px; background:transparent; border:1px solid rgba(207,174,220,0.22); border-radius:7px; color:var(--white-muted); font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; }
-.copy-btn:hover { border-color:rgba(250,156,224,0.5); color:var(--pink-mid); }
-
 .review-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:2.25rem; }
 .metric-card { background:var(--card-bg); border:1px solid var(--card-border); border-radius:12px; padding:1.5rem; position:relative; overflow:hidden; }
 .metric-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--hot-pink),var(--lavender)); }
@@ -186,21 +139,19 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
   <div class="badge">The Baddie Society · Shadow Work Journal</div>
   <h1>Shadow Work<br><em>for the Badass Within</em></h1>
   <p>Soft life. Savage execution.</p>
+
 </div>
 
 <div class="tabs-row">
   <button class="tab-btn active" onclick="showTab('start',this)">Start Here</button>
   <button class="tab-btn" onclick="showTab('portals',this)">The Portals</button>
   <button class="tab-btn" onclick="showTab('daily',this)">Daily Practice</button>
-  <button class="tab-btn" onclick="showTab('generate',this)">AI Oracle</button>
   <button class="tab-btn" onclick="showTab('integrate',this)">Integration</button>
 </div>
 
 <!-- START HERE -->
 <div id="tab-start" class="tab-content active">
-  <div class="safety-box">
-    <p><strong>Before you begin —</strong> Shadow work is sacred inner work. This is a self-reflection tool, not a substitute for therapy. If intense emotions arise, please pause and seek support from a licensed professional. Your pace is sacred.</p>
-  </div>
+  <div class="safety-box"><p><strong>Before you begin —</strong> Shadow work is sacred inner work. This is a self-reflection tool, not a substitute for therapy. If intense emotions arise, please pause and seek support from a licensed professional. Your pace is sacred.</p></div>
   <span class="section-label">What is Shadow Work?</span>
   <h2 class="section-title" style="margin-bottom:1.5rem;">The Parts of You Running Your Business</h2>
   <div class="start-grid">
@@ -242,50 +193,14 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
   <div class="daily-spread">
     <div class="spread-header"><div class="date-display" id="dailyDate"></div><div class="week-num">Week 1 · Day 1</div></div>
     <div class="step-indicator"><div class="step-dot active"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div></div>
-    <div class="journal-step active" id="jstep0"><div class="step-num">Step 1 of 7 · Trigger</div><div class="step-q">What activated you in your business today?</div><div class="step-hint">A client interaction, a sales moment, seeing someone's post, avoiding a task…</div><textarea class="journal-textarea" placeholder="Today I felt activated when…"></textarea></div>
-    <div class="journal-step" id="jstep1"><div class="step-num">Step 2 of 7 · Meaning</div><div class="step-q">What did you make it mean about you?</div><div class="step-hint">The story your mind immediately told about yourself…</div><textarea class="journal-textarea" placeholder="I made it mean that I am…"></textarea></div>
-    <div class="journal-step" id="jstep2"><div class="step-num">Step 3 of 7 · Body</div><div class="step-q">Where did you feel it in your body?</div><div class="step-hint">Select all that apply, then describe below.</div><div class="somatic-row"><div class="somatic-tag" onclick="toggleTag(this)">Chest tightness</div><div class="somatic-tag" onclick="toggleTag(this)">Throat closing</div><div class="somatic-tag" onclick="toggleTag(this)">Stomach drop</div><div class="somatic-tag" onclick="toggleTag(this)">Shoulders up</div><div class="somatic-tag" onclick="toggleTag(this)">Holding breath</div><div class="somatic-tag" onclick="toggleTag(this)">Heat rising</div><div class="somatic-tag" onclick="toggleTag(this)">Going numb</div><div class="somatic-tag" onclick="toggleTag(this)">Head spinning</div></div><textarea class="journal-textarea" placeholder="Describe the physical sensation…" style="min-height:100px;"></textarea></div>
-    <div class="journal-step" id="jstep3"><div class="step-num">Step 4 of 7 · Memory</div><div class="step-q">What is the earliest memory with this same feeling?</div><div class="step-hint">Let your body answer, not your logic mind.</div><textarea class="journal-textarea" placeholder="I first felt this way when…"></textarea></div>
-    <div class="journal-step" id="jstep4"><div class="step-num">Step 5 of 7 · Protection</div><div class="step-q">What is this shadow part trying to protect you from?</div><div class="step-hint">This part once kept you safe. It has a positive intention even if its methods are outdated.</div><textarea class="journal-textarea" placeholder="This part of me is trying to protect me from…"></textarea></div>
-    <div class="journal-step" id="jstep5"><div class="step-num">Step 6 of 7 · Reframe</div><div class="step-q">What does your wiser self want this part to know?</div><div class="step-hint">Speak to this shadow with the compassion you'd offer your younger self.</div><textarea class="journal-textarea" placeholder="Thank you for protecting me. I want you to know that…"></textarea></div>
-    <div class="journal-step" id="jstep6"><div class="step-num">Step 7 of 7 · Action</div><div class="step-q">One aligned business action you will still take today.</div><div class="step-hint">Shadow work is not an excuse to hide. What does your next move look like?</div><textarea class="journal-textarea" placeholder="Despite this activation, today I will…"></textarea><div class="integration-box" style="margin-top:1.25rem;"><span class="int-label">Shadow → Strategy</span><p>After completing all 7 steps, visit the Integration tab to turn this insight into a concrete business shift.</p></div></div>
+    <div class="journal-step active"><div class="step-num">Step 1 of 7 · Trigger</div><div class="step-q">What activated you in your business today?</div><div class="step-hint">A client interaction, a sales moment, seeing someone's post, avoiding a task…</div><textarea class="journal-textarea" placeholder="Today I felt activated when…"></textarea></div>
+    <div class="journal-step"><div class="step-num">Step 2 of 7 · Meaning</div><div class="step-q">What did you make it mean about you?</div><div class="step-hint">The story your mind immediately told about yourself…</div><textarea class="journal-textarea" placeholder="I made it mean that I am…"></textarea></div>
+    <div class="journal-step"><div class="step-num">Step 3 of 7 · Body</div><div class="step-q">Where did you feel it in your body?</div><div class="step-hint">Select all that apply, then describe below.</div><div class="somatic-row"><div class="somatic-tag" onclick="toggleTag(this)">Chest tightness</div><div class="somatic-tag" onclick="toggleTag(this)">Throat closing</div><div class="somatic-tag" onclick="toggleTag(this)">Stomach drop</div><div class="somatic-tag" onclick="toggleTag(this)">Shoulders up</div><div class="somatic-tag" onclick="toggleTag(this)">Holding breath</div><div class="somatic-tag" onclick="toggleTag(this)">Heat rising</div><div class="somatic-tag" onclick="toggleTag(this)">Going numb</div><div class="somatic-tag" onclick="toggleTag(this)">Head spinning</div></div><textarea class="journal-textarea" placeholder="Describe the physical sensation…" style="min-height:100px;"></textarea></div>
+    <div class="journal-step"><div class="step-num">Step 4 of 7 · Memory</div><div class="step-q">What is the earliest memory with this same feeling?</div><div class="step-hint">Let your body answer, not your logic mind.</div><textarea class="journal-textarea" placeholder="I first felt this way when…"></textarea></div>
+    <div class="journal-step"><div class="step-num">Step 5 of 7 · Protection</div><div class="step-q">What is this shadow part trying to protect you from?</div><div class="step-hint">This part once kept you safe. It has a positive intention even if its methods are outdated.</div><textarea class="journal-textarea" placeholder="This part of me is trying to protect me from…"></textarea></div>
+    <div class="journal-step"><div class="step-num">Step 6 of 7 · Reframe</div><div class="step-q">What does your wiser self want this part to know?</div><div class="step-hint">Speak to this shadow with the compassion you'd offer your younger self.</div><textarea class="journal-textarea" placeholder="Thank you for protecting me. I want you to know that…"></textarea></div>
+    <div class="journal-step"><div class="step-num">Step 7 of 7 · Action</div><div class="step-q">One aligned business action you will still take today.</div><div class="step-hint">Shadow work is not an excuse to hide. What does your next move look like?</div><textarea class="journal-textarea" placeholder="Despite this activation, today I will…"></textarea><div class="integration-box" style="margin-top:1.25rem;"><span class="int-label">Shadow → Strategy</span><p>After completing all 7 steps, visit the Integration tab to turn this insight into a concrete business shift.</p></div></div>
     <div class="btn-row"><button class="btn-secondary" id="prevBtn" onclick="navStep(-1)" style="display:none;">← Back</button><button class="btn-primary" id="nextBtn" onclick="navStep(1)">Next step →</button></div>
-  </div>
-</div>
-
-<!-- AI ORACLE -->
-<div id="tab-generate" class="tab-content">
-  <div class="gen-form">
-    <p class="oracle-intro">Tell the Oracle what you need. She'll generate custom shadow prompts, integration rituals, or a weekly plan — tailored to your exact business season.</p>
-    <div class="form-group"><label class="form-label">Your name (optional)</label><input type="text" class="form-input" id="genName" placeholder="How the Oracle should address you…"></div>
-    <div class="form-group"><label class="form-label">Which portal are you in?</label>
-      <select class="form-select" id="genPortal">
-        <option value="">Choose your portal…</option>
-        <option value="💰 Money & Receiving">💰 Money & Receiving</option>
-        <option value="🔥 Visibility & Being Seen">🔥 Visibility & Being Seen</option>
-        <option value="👑 Authority & Leadership">👑 Authority & Leadership</option>
-        <option value="🤝 Clients & Boundaries">🤝 Clients & Boundaries</option>
-        <option value="💎 Self-Worth & Rest">💎 Self-Worth & Rest</option>
-        <option value="🌙 Comparison & Envy">🌙 Comparison & Envy</option>
-      </select>
-    </div>
-    <div class="form-group"><label class="form-label">What's alive in your business right now?</label><textarea class="form-textarea" id="genContext" placeholder="e.g. I just launched and no one bought. Male clients undermining me. I can't show up consistently…"></textarea></div>
-    <div class="form-group"><label class="form-label">What would you like the Oracle to generate?</label>
-      <div class="checkbox-grid">
-        <div class="checkbox-item checked" onclick="toggleCheck(this)"><div class="check-dot"></div><span>5 deep shadow prompts</span></div>
-        <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-dot"></div><span>Integration ritual</span></div>
-        <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-dot"></div><span>Shadow → Strategy action</span></div>
-        <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-dot"></div><span>Inner child dialogue</span></div>
-        <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-dot"></div><span>Weekly journaling plan</span></div>
-        <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-dot"></div><span>Saboteur CEO dialogue</span></div>
-      </div>
-    </div>
-    <button class="gen-btn" id="genBtn" onclick="generatePrompts()">✦ Consult the Oracle ✦</button>
-    <div class="gen-output" id="genOutput">
-      <span class="gen-output-label">✦ Your Oracle Response</span>
-      <div class="gen-output-text" id="genText"></div>
-      <button class="copy-btn" id="copyBtn" onclick="copyOutput()" style="display:none;">Copy to journal</button>
-    </div>
   </div>
 </div>
 
@@ -302,12 +217,12 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
   <div class="strategy-box" style="margin-bottom:2rem;"><h4>Business Action Shifts</h4><p style="margin-bottom:0.85rem;">How will you apply this insight to marketing, sales, or your offers?</p><textarea class="journal-textarea" placeholder="Based on what I discovered, this week I will change…" style="min-height:100px;"></textarea></div>
   <span class="section-label">Integration Action List</span>
   <div>
-    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Complete your daily 7-step shadow spread</div></div>
-    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Send the email or post you've been avoiding</div></div>
-    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Have one aligned money conversation — raise a price, ask for a sale</div></div>
+    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Complete your daily shadow work prompt from The Badass Within — one question, one honest answer, no editing</div></div>
+    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Send the message, post the content, or make the ask you have been sitting on — she would not wait. Neither do you.</div></div>
+    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Have one sovereign money conversation this week — quote your real rate, ask for the sale, or receive a payment without immediately spiraling about where it is going</div></div>
     <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Practice one somatic grounding ritual before business tasks</div></div>
-    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Say no to one misaligned inquiry or request</div></div>
-    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Take one visible leadership step — post, go live, share an opinion</div></div>
+    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Say no to one thing that does not match your queen standards this week — without explaining, without apologizing, without guilt</div></div>
+    <div class="action-item"><div class="action-check" onclick="toggleAction(this)"></div><div class="action-text">Take one visible step as her this week — post the thing, go live, share the opinion, show up as the woman you are becoming not the one you have been</div></div>
   </div>
   <div class="closing-ritual"><span class="ritual-label">Closing Ritual</span><p>Take three deep breaths and say aloud:<br><strong>"I integrate what I discover. I act from wholeness, not wound. Soft life. Savage execution."</strong></p></div>
 </div>
@@ -324,8 +239,7 @@ body { background-color: var(--black); min-height: 100vh; font-family: 'Montserr
     for(let i=0;i<320;i++){
       const x=Math.random()*c.width,y=Math.random()*c.height,r=Math.random()*1.4;
       ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
-      ctx.fillStyle=cols[Math.floor(Math.random()*cols.length)]+(0.15+Math.random()*0.65)+')';
-      ctx.fill();
+      ctx.fillStyle=cols[Math.floor(Math.random()*cols.length)]+(0.15+Math.random()*0.65)+')'; ctx.fill();
     }
   }
   window.addEventListener('resize',resize); resize();
@@ -397,52 +311,7 @@ function navStep(dir){
 }
 
 function toggleTag(el){ el.classList.toggle('selected'); }
-function toggleCheck(el){ el.classList.toggle('checked'); }
 function toggleAction(check){ check.classList.toggle('done'); check.nextElementSibling.classList.toggle('done-text'); document.getElementById('actionCount').textContent=document.querySelectorAll('.action-check.done').length; }
-
-async function generatePrompts(){
-  const name=document.getElementById('genName').value.trim();
-  const portal=document.getElementById('genPortal').value;
-  const context=document.getElementById('genContext').value.trim();
-  const checked=[...document.querySelectorAll('.checkbox-item.checked span')].map(s=>s.textContent);
-  if(!portal&&!context){ alert('Please select a portal or describe what\'s alive in your business.'); return; }
-  const btn=document.getElementById('genBtn');
-  const output=document.getElementById('genOutput');
-  const genText=document.getElementById('genText');
-  const copyBtn=document.getElementById('copyBtn');
-  btn.disabled=true;
-  output.classList.add('show');
-  genText.innerHTML='<div class="loading-dots"><span>✦</span><span>✦</span><span>✦</span></div>';
-  copyBtn.style.display='none';
-  const addressing=name?`You are writing for ${name}, a spiritual entrepreneur.`:'You are writing for a spiritual entrepreneur.';
-  const requested=checked.length?checked.join(', '):'5 deep shadow work prompts';
-  try {
-    const res=await fetch('/api/oracle',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        system:`You are the Badass Alchemy Oracle — a spiritually grounded, psychologically precise shadow work guide for spiritual entrepreneurs. Your voice is warm, direct, and unflinchingly honest — like a best friend who's also a therapist and a business strategist. You blend Jungian shadow work, somatic awareness, and real business strategy. You never coddle, never preach. You call women forward, never down. Brand mantra: "Soft life. Savage execution." Use ✦ as section/bullet markers. Plain text only, no markdown.`,
-        messages:[{role:'user',content:`${addressing}\nPortal: ${portal||'General shadow work'}.\nWhat is alive in their business: ${context||'general shadow patterns'}.\nGenerate the following: ${requested}\nBe psychologically precise. Name the shadow mechanism beneath the surface behavior. Connect inner work to outer business strategy. End with one grounding reminder in the brand voice.`}]
-      })
-    });
-    if(!res.ok) throw new Error(`Server error ${res.status}`);
-    const data=await res.json();
-    const text=data?.content?.[0]?.text;
-    if(text){ genText.textContent=text; copyBtn.style.display='inline-block'; }
-    else genText.textContent='The Oracle is resting. Please try again.';
-  } catch(e){
-    genText.textContent=`Something went wrong: ${e.message}. Please try again.`;
-  }
-  btn.disabled=false;
-}
-
-function copyOutput(){
-  navigator.clipboard.writeText(document.getElementById('genText').textContent).then(()=>{
-    const btn=document.getElementById('copyBtn'); btn.textContent='Copied ✓';
-    setTimeout(()=>{ btn.textContent='Copy to journal'; },2000);
-  });
-}
-
 document.getElementById('dailyDate').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
 </script>
 </body>
